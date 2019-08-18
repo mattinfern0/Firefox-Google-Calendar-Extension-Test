@@ -21,9 +21,22 @@ input[type="text"], input[type="number"]{
 }
 
 input[type="number"]{
-    width: 2.5em;
+    width: 4em;
 }
 
 input[type="text"], input[type="submit"]{
-    width: 75%
+    width: 90%;
 }
+
+#date *{
+    display:inline-block;
+}
+
+select{
+    width: 8em;
+}
+
+#year{
+    width: 5em;
+}
+

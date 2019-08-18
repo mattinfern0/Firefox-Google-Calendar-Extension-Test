@@ -9,10 +9,17 @@
         "48": "assets/icons/plus-sign.png"
     },
 
+    "permissions": ["contextMenus"],
+
     "browser_action": {
         "default_icon": "assets/icons/plus-sign.png",
         "default_title": "Add to Google Calendar",
-        "default_popup": "scripts/action.html"
+        "default_popup": "date_form.html",
+        "browser_style": true
+    },
+
+    "background": {
+        "page": "background.html"
     }
 }
 
