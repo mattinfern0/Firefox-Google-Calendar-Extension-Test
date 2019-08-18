@@ -1,0 +1,29 @@
+form{
+    width: 300px
+}
+input, select{
+    font-size: 10pt;
+    margin-bottom: 5px;
+}
+
+form #date, form input{
+    display: block;
+}
+
+#date {
+    display: inline
+}
+
+input[type="text"], input[type="number"]{
+    padding: 7px;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+}
+
+input[type="number"]{
+    width: 2.5em;
+}
+
+input[type="text"], input[type="submit"]{
+    width: 75%
+}

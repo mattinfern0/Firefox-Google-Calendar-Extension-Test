@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "Quick Calendar Event",
+    "version": "1.0 Alpha",
+
+    "description": "Adds highlighted date into Google Calendar Event",
+
+    "icons" : {
+        "48": "assets/icons/plus-sign.png"
+    },
+
+    "browser_action": {
+        "default_icon": "assets/icons/plus-sign.png",
+        "default_title": "Add to Google Calendar",
+        "default_popup": "scripts/action.html"
+    }
+}
+
