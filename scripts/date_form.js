@@ -1,6 +1,18 @@
+
 function updateName(newName){
     document.getElementById("name").value = newName;
     console.log("Updated name to " + newName);
+}
+
+function parseDateString(dateStr){
+    const dateFormats = [
+        "DD-MMM-YYYY",
+        "MM-DD-YYYY",
+        "LL",
+        "L"
+    ]
+    var theDate = moment(dateStr, dateFormats);
+    console.log(theDate);
 }
 
 function setInputDefaults(selectedText){
@@ -11,7 +23,7 @@ function setInputDefaults(selectedText){
     document.getElementById("day").value = today.getDate();
     document.getElementById("month").value = today.getMonth() + 1; // getMonth() returns 0-based month number
     document.getElementById("year").value = today.getFullYear();
-    
+    console.log(moment());
 }
 
 function autoFillText(e){
@@ -41,6 +53,7 @@ function updateMaxDay(e){
 function setup(){
     document.querySelector("select").oninput = updateMaxDay
     autoFillText();
+    parseDateString("Jan 4 2017");
 }
 
 setup();
