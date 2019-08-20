@@ -13,17 +13,25 @@ function parseDateString(dateStr){
     ]
     var theDate = moment(dateStr, dateFormats);
     console.log(theDate);
+    console.log("Is this date valid: " + theDate.isValid());
+    return theDate;
 }
 
 function setInputDefaults(selectedText){
-    if (selectedText != ""){
+    var theDate = parseDateString(selectedText);
+
+    if (theDate.isValid()){
+        document.getElementById("day").value = theDate.date();
+        document.getElementById("month").value = theDate.month() + 1; // month() returns 0-based month number
+        document.getElementById("year").value = theDate.year();
+    } else {
         updateName(selectedText)
+
+        today = new Date();
+        document.getElementById("day").value = today.getDate();
+        document.getElementById("month").value = today.getMonth() + 1; // getMonth() returns 0-based month number
+        document.getElementById("year").value = today.getFullYear();
     }
-    today = new Date();
-    document.getElementById("day").value = today.getDate();
-    document.getElementById("month").value = today.getMonth() + 1; // getMonth() returns 0-based month number
-    document.getElementById("year").value = today.getFullYear();
-    console.log(moment());
 }
 
 function autoFillText(e){
@@ -53,7 +61,6 @@ function updateMaxDay(e){
 function setup(){
     document.querySelector("select").oninput = updateMaxDay
     autoFillText();
-    parseDateString("Jan 4 2017");
 }
 
 setup();
