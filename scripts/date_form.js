@@ -1,12 +1,24 @@
-function updateName(message){
-    newText = message.response;
-    document.getElementById("name").value = newText;
-    console.log("Updated name to " + newText);
+function updateName(newName){
+    document.getElementById("name").value = newName;
+    console.log("Updated name to " + newName);
+}
+
+function setInputDefaults(selectedText){
+    if (selectedText != ""){
+        updateName(selectedText)
+    }
+    today = new Date();
+    document.getElementById("day").value = today.getDate();
+    document.getElementById("month").value = today.getMonth() + 1; // getMonth() returns 0-based month number
+    document.getElementById("year").value = today.getFullYear();
+    
 }
 
 function autoFillText(e){
-    var sending = browser.runtime.sendMessage({command: "sendHighlighted"});
-    sending.then(updateName);
+    var getSelected = browser.runtime.sendMessage({command: "sendHighlighted"});
+    getSelected.then((message)=>{
+        setInputDefaults(message.response)
+    });
 }
 
 function getMaxDay(month){
@@ -26,16 +38,8 @@ function updateMaxDay(e){
     dayInput.max = getMaxDay(month)
 }
 
-function setInputDefaults(){
-    today = new Date();
-    document.getElementById("day").value = today.getDate();
-    document.getElementById("month").value = today.getMonth() + 1; // getMonth() returns 0-based month number
-    document.getElementById("year").value = today.getFullYear();
-}
-
 function setup(){
     document.querySelector("select").oninput = updateMaxDay
-    setInputDefaults();
     autoFillText();
 }
 

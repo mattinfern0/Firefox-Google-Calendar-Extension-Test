@@ -1,8 +1,9 @@
 var selectedText = ""
 
 function backgroundListener(message){
-    if (message.command === "sendHighlighted"){
-        return Promise.resolve({response: selectedText});
+    switch (message.command){
+        case "sendHighlighted":
+            return Promise.resolve({response: selectedText});
     }
 }
 
