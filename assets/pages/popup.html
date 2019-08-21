@@ -7,8 +7,10 @@
 <body>
     <div id="event-form">
         <form>
-            <div id="date">
+            <fieldset id="date">
+                    <legend>Event Date</legend>
                 <select id="month">
+                    
                     <option value=1>January</option>
                     <option value=2>February</option>
                     <option value=3>March</option>
@@ -24,7 +26,7 @@
                 </select>
                 <input id="day" type="number" min=1 max=31 placeholder="1">
                 <input id="year" type="number">
-            </div>
+            </fieldset>
             <input id="name" type="text" placeholder="Event Name">
             <input type="submit" value="Add Event">
         </form>

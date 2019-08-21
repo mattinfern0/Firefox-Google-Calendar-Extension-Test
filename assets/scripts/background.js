@@ -1,13 +1,21 @@
+//import authenticate from "./authenticate";
+
 var selectedText = ""
+
+function tryAddingEvent(date, name){
+    authenticate().then((result) => {
+        addCalendarEvent(result, date, name);
+    })
+}
 
 function backgroundListener(message){
     switch (message.command){
         case "sendHighlighted":
             return Promise.resolve({response: selectedText});
+        case "addEvent":
+            tryAddingEvent(message.date, message.eventName);
     }
 }
-
-browser.runtime.onMessage.addListener(backgroundListener)
 
 function createContextItem(){
     browser.contextMenus.create({
@@ -19,7 +27,6 @@ function createContextItem(){
     browser.contextMenus.onClicked.addListener((info) => {
         if (info.hasOwnProperty('selectionText')){
             selectedText = info.selectionText;
-            console.log("Selected text: " + selectedText);
         } else {
             selectedText = "";
         }
@@ -29,8 +36,8 @@ function createContextItem(){
 }
 
 function setup(){
-    
     createContextItem();
+    browser.runtime.onMessage.addListener(backgroundListener);
 }
 
 setup();

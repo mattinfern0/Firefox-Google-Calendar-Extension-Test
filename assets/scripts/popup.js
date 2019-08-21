@@ -1,4 +1,3 @@
-
 function updateName(newName){
     document.getElementById("name").value = newName;
     console.log("Updated name to " + newName);
@@ -12,8 +11,6 @@ function parseDateString(dateStr){
         "L"
     ]
     var theDate = moment(dateStr, dateFormats);
-    console.log(theDate);
-    console.log("Is this date valid: " + theDate.isValid());
     return theDate;
 }
 
@@ -56,6 +53,21 @@ function updateMaxDay(e){
     month = this.value
     dayInput = document.getElementById("day")
     dayInput.max = getMaxDay(month)
+}
+
+function handleResponse(result){
+
+}
+
+function addEvent(){
+    // Code to parse the date from the form
+    var theDate = moment();
+    var name = ""
+    browser.runtime.sendMessage({
+        command: "addEvent",
+        date: theDate.toJSON(),
+        eventName: name,
+    })
 }
 
 function setup(){

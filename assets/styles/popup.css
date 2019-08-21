@@ -6,7 +6,7 @@ input, select{
     margin-bottom: 5px;
 }
 
-form #date, form input{
+fieldset #date, form input{
     display: block;
 }
 
