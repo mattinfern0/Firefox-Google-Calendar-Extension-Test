@@ -22,7 +22,9 @@ function setInputDefaults(selectedText){
         document.getElementById("month").value = theDate.month() + 1; // month() returns 0-based month number
         document.getElementById("year").value = theDate.year();
     } else {
-        updateName(selectedText)
+        if (selectedText != ""){
+            updateName(selectedText)
+        }
 
         today = new Date();
         document.getElementById("day").value = today.getDate();
@@ -56,13 +58,20 @@ function updateMaxDay(e){
 }
 
 function handleResponse(result){
-
+    return;
 }
 
 function addEvent(){
     // Code to parse the date from the form
-    var theDate = moment();
-    var name = ""
+    monthDay = document.getElementById("day").value;
+    month = document.getElementById("month").value;
+    year = document.getElementById("year").value;
+
+    var theDate = moment().month(month - 1).date(monthDay).year(year);
+    var name = document.getElementById("name").value;
+    console.log("Inputted date: ");
+    console.log(theDate);
+
     browser.runtime.sendMessage({
         command: "addEvent",
         date: theDate.toJSON(),
@@ -73,6 +82,7 @@ function addEvent(){
 function setup(){
     document.querySelector("select").oninput = updateMaxDay
     autoFillText();
+    document.getElementById("date-form").addEventListener('submit', addEvent);
 }
 
 setup();

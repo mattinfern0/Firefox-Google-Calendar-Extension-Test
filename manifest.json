@@ -3,6 +3,12 @@
     "name": "Quick Calendar Event",
     "version": "1.0 Alpha",
 
+    "browser_specific_settings":{
+      "gecko":{
+          "id": "add-to-gcalendar-mattpixel7@gmail.com"
+      }  
+    },
+
     "description": "Adds highlighted date into Google Calendar Event",
 
     "icons" : {

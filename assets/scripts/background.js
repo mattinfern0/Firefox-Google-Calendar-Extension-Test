@@ -3,8 +3,9 @@
 var selectedText = ""
 
 function tryAddingEvent(date, name){
-    authenticate().then((result) => {
-        addCalendarEvent(result, date, name);
+    authenticate().then((token) => {
+        console.log("Authentication successful");
+        addCalendarEvent(token, date, name);
     })
 }
 
@@ -38,6 +39,7 @@ function createContextItem(){
 function setup(){
     createContextItem();
     browser.runtime.onMessage.addListener(backgroundListener);
+    console.log(browser.identity.getRedirectURL());
 }
 
 setup();
